@@ -1,0 +1,34 @@
+[[block]]
+block = "sound"
+step_width = 3
+[[block]]
+block = "backlight"
+device = "intel_backlight"
+[[block]]
+block = "battery"
+interval = 10
+format = "{percentage}% {time}"
+[[block]]
+block = "cpu"
+interval = 1
+format = "{barchart} {utilization}% {frequency}GHz"
+[[block]]
+block = "memory"
+format_mem = "{Mum}MB/{MTm}MB({Mup}%)"
+format_swap = "{SUm}MB/{STm}MB({SUp}%)"
+display_type = "memory"
+icons = true
+clickable = true
+interval = 5
+warning_mem = 80
+warning_swap = 80
+critical_mem = 95
+critical_swap = 95
+[[block]]
+block = "networkmanager"
+on_click = "st -e nmtui"
+interface_name_exclude = ["br\\-[0-9a-f]{12}", "docker\\d+"]
+interface_name_include = []
+[[block]]
+block = "time"
+interval = 60
