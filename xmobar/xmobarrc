@@ -1,0 +1,27 @@
+Config { font            = "xft:monospace:weight=bold:pixelsize=12:antialias=true:hinting=true"
+       , additionalFonts = [ "xft:Mononoki:pixelsize=12:antialias=true:hinting=true"
+                           , "xft:Font Awesome 6 Free Solid:pixelsize=12"
+                           , "xft:Font Awesome 6 Brands:pixelsize=12"
+                           ]
+       , bgColor      = "#282a36"
+       , fgColor      = "#f8f8f2"
+       , position       = TopSize L 100 24
+       , lowerOnStart = False
+       , hideOnStart  = False
+       , allDesktops  = True
+       , persistent   = True
+       , commands = [
+		      Run MultiCoreTemp ["-t", "<fn=2>\xf2cb</fn> Temp: <avg>°C", "-L", "60", "-H", "80", "-l", "green", "-n", "yellow", "-h", "red", "--", "--mintemp", "20", "--maxtemp", "100"] 50
+		    , Run Volume "default" "Master" ["-t", "<fn=2>\xf028</fn> Vol: <volume>%"] 10
+		    , Run Network "wlp44s0" ["--template", "<fn=2>\xf338</fn> net: <rx>kB·<tx>kB", "-L","1000","-H","5000", "--low", "#6272a4", "--normal","#ffb86c","--high","#ff79c6"] 10
+                    , Run Cpu ["-t", "<fn=2>\xf108</fn> cpu: (<total>%)"] 20
+                    , Run Memory ["-t", "<fn=2>\xf233</fn> mem: <used>M (<usedratio>%)"] 20
+                    , Run DiskU [("/", "<fn=2>\xf0c7</fn> ssd: <free> free")] [] 60
+                    , Run BatteryP ["BAT0"] ["-t", "<fn=2>\xf2cb</fn> <acstatus> <watts>W <left>%"] 360
+		    , Run Date "<fn=2>\xf017</fn> %b %d %Y - (%H:%M) " "date" 50
+		    , Run XMonadLog
+                    ]
+       , sepChar = "%"
+       , alignSep = "}{"
+       , template = "%XMonadLog% }{ %multicoretemp% | <fc=#50fa7b>%default:Master%</fc> | <fc=#bd93f9>%cpu%</fc> | <fc=#ff79c6>%memory%</fc> | <fc=#f1fa8c>%disku%</fc> | %wlp44s0% | <fc=#8be9fd>%battery%</fc> | <fc=#ee9a00>%date%</fc>" }
+

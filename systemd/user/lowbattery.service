@@ -1,0 +1,9 @@
+[Unit]
+Description=Alert in case of low remaining battery
+
+[Service]
+Type=oneshot
+ExecStart=/home/tsuyoshi/.config/script/lowbattery.sh
+
+[Install]
+WantedBy=graphical.target
